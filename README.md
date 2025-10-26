@@ -39,7 +39,12 @@ This guide explains how to set up your ESP8266 board and your PC for MicroPython
 1. Download MicroPython-compatible libraries, make sure they don't import smbus and they are micropython libs:
    - [lcd_api.py](https://github.com/dhylands/python_lcd/blob/master/lcd/lcd_api.py)
    - [i2c_lcd.py](https://github.com/dhylands/python_lcd/blob/master/lcd/i2c_lcd.py)
-2. Upload files using mpremote:
+2. Change the wifi credentials in ```main.py``` to yours, then save file
+   ```
+   ssid = 'XX' #replace with your WiFi SSID
+   password = 'XX' #replace with your WiFi password
+   ```
+3. Upload files using mpremote:
    ```
    python -m mpremote connect COMx cp main.py :main.py
    python -m mpremote connect COMx cp lcd_api.py :lcd_api.py
@@ -61,3 +66,6 @@ Added functionality of sending ip at start and waiting for one message from serv
 - If you see `ImportError: no module named 'smbus'`, you are using a non-MicroPython library. Use the correct files linked above.
 - Make sure only one program is using the COM port at a time.
 - If upload fails, reset the board and try again.
+
+## 8. Usage 
+To use device click rst button. On every reset device will send a message to given ip, then wait for message sent to it. The message sent by device will contain its ip. The message receive will be verified whether it's 'ALERT', if true the buzzer beep will go on for few secs then the device will come back to waiting for message.

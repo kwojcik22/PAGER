@@ -72,8 +72,8 @@ print("PAGER RUNNING")
 time.sleep_ms(1000)  # Keep the LED on for 1 second
 led.value(1)  # Turn the LED off
 
-ssid = 'T-Mobile_Swiatlowod_0574'
-password = '52290969530931889255'
+ssid = 'XX' #replace with your WiFi SSID
+password = 'XX' #replace with your WiFi password
 server_ip = '192.168.1.116'
 server_port = 22
 wlan = connect_wifi(ssid, password)
