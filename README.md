@@ -2,12 +2,13 @@
 
 This guide explains how to set up your ESP8266 board and your PC for MicroPython development, including installing all dependencies and uploading files.
 
-## Requirements
-- ESP8266 development board
-- USB cable
+## HARDWARE
+- ESP8266 development board for ch340 driver
+- USBmicro cable
 - Windows PC (PowerShell recommended)
 - Python 3.x installed on your PC
 
+## ESP instalation 
 ## 1. Install Python and Required Tools on PC
 1. Download and install Python 3.x from [python.org](https://www.python.org/downloads/).
 2. Open PowerShell and install the required Python packages:
