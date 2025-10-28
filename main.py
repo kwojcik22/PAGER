@@ -27,14 +27,14 @@ def connect_wifi(ssid, password):
     print('Connected to WiFi:', wlan.ifconfig())
     return wlan
 
-def device_msg():
+def device_msg(message):
     i2c = I2C(scl=Pin(5), sda=Pin(4), freq=400000)
     lcd_addr = 0x27  # Common address, yours may differ
     lcd = I2cLcd(i2c, lcd_addr, 2, 16)
     lcd.move_to(0, 0)
     lcd.putstr("INCOMING:")
-    lcd.move_to(3, 1)
-    lcd.putstr("P I W O")
+    lcd.move_to(0, 1)
+    lcd.putstr(message)
 
         #PWM piezo buzzer on pin 15
     buzzer = machine.PWM(machine.Pin(15), freq=10, duty=512)
@@ -55,8 +55,8 @@ def server_command():
         data, addr = server_socket.recvfrom(1024)  # Buffer size is 1024 bytes
         command = data.decode()
         print("Received command:", command)
-        if command == 'ALERT\n':
-            device_msg()
+        #if command == 'ALERT\n':
+        device_msg(command)
 
 def turn_off_LCD():
     i2c = I2C(scl=Pin(5), sda=Pin(4), freq=400000)
@@ -72,8 +72,8 @@ print("PAGER RUNNING")
 time.sleep_ms(1000)  # Keep the LED on for 1 second
 led.value(1)  # Turn the LED off
 
-ssid = 'XX' #replace with your WiFi SSID
-password = 'XX' #replace with your WiFi password
+ssid = 'T-Mobile_Swiatlowod_0574' #replace with your WiFi SSID
+password = '52290969530931889255' #replace with your WiFi password
 server_ip = '192.168.1.116'
 server_port = 22
 wlan = connect_wifi(ssid, password)
